@@ -2,8 +2,8 @@ swagger: "2.0"
 info:
   version: "1.0"
   title: LTA Demo API
-host: jtandemo-test.apigee.net
-basePath: /soap
+host: apac-demo1-test.apigee.net
+basePath: /ltademo
 schemes:
   - http
   - https
@@ -12,10 +12,10 @@ consumes:
 produces:
   - application/json
 paths:
-  /getdetails:
+  /charge:
     
     get:
-      description: Returns greetings to the caller
+      description: Get Payment Details
       operationId: getdetails
       responses:
         "200":
@@ -26,15 +26,57 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/errorResponse"
+            
+
+    post:
+      description: Initiate Payment
+      operationId: initiate
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/initiateResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/errorResponse"   
+
+
+    put:
+      description: Refund Payment
+      operationId: refund
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/refundResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/errorResponse"             
+
+    
+    delete:
+      description: Cancel Payment
+      operationId: cancel
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/cancelResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/errorResponse" 
+            
 definitions:
+
   getdetailsResponse:
     required:
       - status
     properties:
       status:
         type: string
-      amount:
-        type: number
       currency:
         type: string
       payerparticulars:
@@ -45,6 +87,36 @@ definitions:
         type: string
       payeereference:
         type: string
+   
+  initiateResponse:
+    required:
+      - status
+    properties:
+      status:
+        type: string
+      paymentid:
+        type: string
+
+  refundResponse:
+    required:
+      - status
+    properties:
+      status:
+        type: string
+      paymentid:
+        type: string
+
+  cancelResponse:
+    required:
+      - status
+    properties:
+      status:
+        type: string
+      paymentid:
+        type: string
+      paymentstatus:
+        type: string
+        
   errorResponse:
     required:
       - status
