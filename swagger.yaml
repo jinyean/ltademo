@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
-  version: "0.0.1"
-  title: Swagger API
+  version: "1.0"
+  title: LTA Demo API
 host: apac-demo1-test.apigee.net
 basePath: /v1/ltademo
 schemes:
