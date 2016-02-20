@@ -1,0 +1,53 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Swagger API
+host: apac-demo1-test.apigee.net
+basePath: /v1/ltademo
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /getdetails:
+    
+    get:
+      description: Returns greetings to the caller
+      operationId: getdetails
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/getdetailsResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/errorResponse"
+definitions:
+  getdetailsResponse:
+    required:
+      - status
+    properties:
+      status:
+        type: string
+      amount:
+        type: number
+      currency:
+        type: string
+      payerparticulars:
+        type: string
+      payerreference:
+        type: string
+      payeeparticulars:
+        type: string
+      payeereference:
+        type: string
+  errorResponse:
+    required:
+      - status
+    properties:
+      status:
+        type: string
