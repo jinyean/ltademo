@@ -3,7 +3,7 @@ info:
   version: "1.0"
   title: LTA Demo API
 host: apac-demo1-test.apigee.net
-basePath: /ltademo
+basePath: /v1
 schemes:
   - http
   - https
